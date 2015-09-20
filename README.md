@@ -1,6 +1,6 @@
-# Strgen
+# Strgen ![Build Status](https://api.travis-ci.org/ConnorAtherton/strgen.svg)
 
-A Ruby arbitrary string generator
+An arbitrary Ruby string generator
 
 ## Usage
 
@@ -37,10 +37,10 @@ letters excluding the letters `A` and `B`.
 
 ```ruby
 Strgen.generate do |c|
-  c.lowercase = false;
-  c.numbers = false;
-  c.symbols = false;
-  c.length = 25;
+  c.lowercase = false
+  c.numbers = false
+  c.symbols = false
+  c.length = 25
   c.exclude = %w(A B)
 end
 

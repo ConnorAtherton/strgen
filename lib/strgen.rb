@@ -1,5 +1,4 @@
 require 'strgen/version'
-require 'pry'
 
 #
 # Usage:
@@ -20,10 +19,15 @@ class Strgen
 
   attr_accessor *TYPES, :length, :alpha, :alphanum, :exclude, :repeat
 
+  # Errors
+  class InvalidLengthError < StandardError; end
+
   def self.generate(&block)
     proxy = new
     block.call(proxy) if block_given?
     proxy.merge_defaults!
+
+    raise InvalidLengthError if proxy.length < 1
 
     previous = nil
     current = nil
@@ -35,7 +39,6 @@ class Strgen
     proxy.length.times do
       loop do
         current = characters.sample
-
         break if !proxy.exclude?(current) && (!proxy.repeat || current != previous)
       end
 
@@ -50,8 +53,7 @@ class Strgen
       acc[type] = true
       acc
     end.tap do |hash|
-      hash[:length] = 12
-      hash[:repeat] = true
+      hash.merge! length: 12, repeat: true
     end.each do |method, default|
       next unless send(method.to_sym).nil?
       send("#{method}=".to_sym, default)
