@@ -1,6 +1,6 @@
 # Strgen
 
-Easy conditional string generation.
+A arbitrary string generator
 
 ## Usage
 
