@@ -1,6 +1,6 @@
 # Strgen
 
-A arbitrary string generator
+A Ruby arbitrary string generator
 
 ## Usage
 
