@@ -3,8 +3,8 @@ require 'strgen/version'
 #
 # Usage:
 #
-# Strgen.generate do |config|
-#   config.length = 10
+# Strgen.generate do
+#   length = 10
 #   exclude = %w(!)
 # end
 #
@@ -12,8 +12,8 @@ class Strgen
   NUMBERS = (1..9).to_a.map(&:to_s)
   LOWERCASE = ('a'..'z').to_a
   UPPERCASE = ('A'..'Z').to_a
-  ALPHA = LOWERCASE.concat UPPERCASE
-  ALPHANUM = ALPHA.concat NUMBERS
+  ALPHA = LOWERCASE.dup.concat UPPERCASE
+  ALPHANUM = ALPHA.dup.concat NUMBERS
   SYMBOLS = %w(! @ # $ % ^ & \( \) { } [ ] - _ < > ?)
   TYPES = %i(numbers lowercase uppercase symbols)
 
@@ -24,7 +24,11 @@ class Strgen
 
   def self.generate(&block)
     proxy = new
-    block.call(proxy) if block_given?
+
+    if block_given?
+      block.arity > 0 ? block.call(proxy) : proxy.instance_eval(&block)
+    end
+
     proxy.merge_defaults!
 
     raise InvalidLengthError if proxy.length < 1

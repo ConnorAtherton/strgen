@@ -20,15 +20,15 @@ end
 
 Include these in the config block when generating the string (see above)
 
-**numbers** - Numbers 0-9
-**symbols**
-**lowercase** - The lowercase alphabet
-**uppercase** - The uppercase alphabet
-**alpha** - A combination of lowercase and uppercase letters.
-**alphanum** -  A combination of the alpha set and numbers
-**length** - The length of the result string
-**repeat** - Whether repeated characters are allowed
-**exclude** - a character array containing individual letters to exclude
+- **numbers** - Numbers 0-9
+- **symbols** - The following set `[! @ # $ % ^ & ( ) { } [ ] - _ < > ?]`
+- **lowercase** - The lowercase alphabet
+- **uppercase** - The uppercase alphabet
+- **alpha** - A combination of lowercase and uppercase letters.
+- **alphanum** -  A combination of the alpha set and numbers
+- **length** - The length of the result string
+- **repeat** - Whether repeated characters are allowed
+- **exclude** - a character array containing individual letters to exclude
 
 #### Example
 

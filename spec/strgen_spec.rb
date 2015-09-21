@@ -32,27 +32,25 @@ describe Strgen do
   describe 'string parameters' do
     trials = 10
 
-    # it 'lowercase' do
-    #   trials.times do
-    #     string = Strgen.generate { |c| c.lowercase = false }
-    #     binding.pry
-    #     expect(string.does_not_include(Strgen::LOWERCASE)).to eq true
-    #   end
-    # end
+    it 'lowercase' do
+      trials.times do
+        string = Strgen.generate { |c| c.lowercase = false }
+        expect(string.does_not_include(Strgen::LOWERCASE)).to eq true
+      end
+    end
 
-    # it 'uppercase', focus: :true do
-    #   trials.times do
-    #     string = Strgen.generate { |c| c.uppercase = false }
-    #     binding.pry
-    #     expect(string.does_not_include(Strgen::UPPERCASE)).to eq true
-    #   end
-    # end
+    it 'uppercase', focus: :true do
+      trials.times do
+        string = Strgen.generate { |c| c.uppercase = false }
+        expect(string.does_not_include(Strgen::UPPERCASE)).to eq true
+      end
+    end
 
-    # it 'symbols' do
-    #   trials.times do
-    #     string = Strgen.generate { |c| c.symbols = false }
-    #     expect(string.does_not_include(Strgen::SYMBOLS)).to eq true
-    #   end
-    # end
+    it 'symbols' do
+      trials.times do
+        string = Strgen.generate { |c| c.symbols = false }
+        expect(string.does_not_include(Strgen::SYMBOLS)).to eq true
+      end
+    end
   end
 end
